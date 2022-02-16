@@ -1,0 +1,12 @@
+{% extends 'productos_app/base.html' %}
+
+{% block content%}
+    {% for pro in object_list %}
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="/media/{{pro.imagen}}" alt="Card image cap">
+        <div class="card-body">
+          <p class="card-text">{{pro.nombre}}</p>
+        </div>
+      </div>
+      {% endfor %}
+{% endblock %}
