@@ -1,0 +1,8 @@
+from django.urls import path
+from .views import RegistroView
+
+urlpatterns = [
+    path('signup/', RegistroView.as_view(), name="registro"),
+    #path('profile/', ProfileUpdate.as_view(), name="profile"),
+    #path('profile/email/', EmailUpdate.as_view(), name="profile_email"),
+]

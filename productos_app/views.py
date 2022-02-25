@@ -33,11 +33,9 @@ class HomeListView(ListView):
 class ShopListView(ListView):
     template_name = 'productos_app/tienda.html'
     def get_queryset(self):
-        data = {
-            'productos':Producto.objects.all,
-            'categorias':Categoria.objects.all
-        }
-        return data
+        context = Producto.objects.all()
+        print(context)
+        return context
     
 def About(request):    
     return render(request, 'productos_app/about.html')

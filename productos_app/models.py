@@ -18,9 +18,9 @@ class Producto(models.Model):
     nombre = models.CharField(max_length=100, blank=False)
     genero = models.CharField(max_length=1,blank=False, choices=Genero.choices, default=Genero.MASCULINO)
     talla = models.CharField(max_length=20, blank=False)
-    precio_normal = models.IntegerField(blank=False)
-    precio_oferta = models.IntegerField(blank=False)
-    stock = models.IntegerField(blank=False,default=1)    
+    precio_normal = models.PositiveIntegerField(blank=False)
+    precio_oferta = models.PositiveIntegerField(blank=False)
+    stock = models.PositiveIntegerField(blank=False,default=1)    
     imagen = models.ImageField(upload_to='images/p/',blank=False)
     vigente = models.BooleanField(default=True, blank=False)
     

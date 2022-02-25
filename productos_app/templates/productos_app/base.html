@@ -15,9 +15,10 @@
     <link rel="stylesheet" href="{% static 'assets/css/custom.css' %}">
 
     <!-- Load fonts style after rendering the layout styles -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
-    <link rel="stylesheet" href="{% static 'assets/css/fontawesome.min.css' %}">
-<!--
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+    <link rel="stylesheet" href="{% static 'fontawesome/css/all.css' %}">
+    <!--
     
 TemplateMo 559 Zay Shop
 
@@ -33,13 +34,16 @@ https://templatemo.com/tm-559-zay-shop
             <div class="w-100 d-flex justify-content-between">
                 <div>
                     <i class="fa fa-envelope mx-2"></i>
-                    <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:info@company.com">info@company.com</a>
+                    <a class="navbar-sm-brand text-light text-decoration-none"
+                        href="mailto:info@company.com">info@company.com</a>
                     <i class="fa fa-phone mx-2"></i>
                     <a class="navbar-sm-brand text-light text-decoration-none" href="tel:010-020-0340">072110148</a>
                 </div>
                 <div>
-                    <a class="text-light" href="https://fb.com/templatemo" target="_blank" rel="sponsored"><i class="fab fa-facebook-f fa-sm fa-fw me-2"></i></a>
-                    <a class="text-light" href="https://www.instagram.com/blackswan.ec/" target="_blank"><i class="fab fa-instagram fa-sm fa-fw me-2"></i></a>
+                    <a class="text-light" href="https://www.facebook.com/profile.php?id=100074772262744" target="_blank" rel="sponsored"><i
+                            class="fab fa-facebook-f fa-sm fa-fw me-2"></i></a>
+                    <a class="text-light" href="https://www.instagram.com/blackswan.ec/" target="_blank"><i
+                            class="fab fa-instagram fa-sm fa-fw me-2"></i></a>
                 </div>
             </div>
         </div>
@@ -50,16 +54,18 @@ https://templatemo.com/tm-559-zay-shop
     <!-- Header -->
     <nav class="navbar navbar-expand-lg navbar-light shadow">
         <div class="container d-flex justify-content-between align-items-center">
-
             <a class="navbar-brand text-success logo h1 align-self-center" href="{% url 'home' %}">
-              <img src="{% static 'assets/img/logo.png' %}" alt="Black Swan" width="40%"/>
+                <img src="{% static 'assets/img/logo.png' %}" alt="Black Swan" width="40%" />
             </a>
 
-            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
+                data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between" id="templatemo_main_nav">
+            <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between"
+                id="templatemo_main_nav">
                 <div class="flex-fill">
                     <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
                         <li class="nav-item">
@@ -68,43 +74,50 @@ https://templatemo.com/tm-559-zay-shop
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'about' %}">Acerca de</a>
                         </li>
+                        {% if request.user.is_authenticated %}
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'shop' %}">Tienda</a>
                         </li>
+                        {% endif %}
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'contact' %}">Contactanos</a>
                         </li>
+                        <li class="nav-item">
+                            <div class="d-flex">
+                                <div class="vr"></div>
+                            </div>
+                        </li>
+                        {% if request.user.is_authenticated %}
+                        {% endif %}
+
+                        {% if not request.user.is_authenticated %}
+                        <li class="nav-link">
+                            <a class="nav-icon position-relative text-decoration-none" href="{% url 'login' %}">
+                                <i class="fa-solid fa-right-to-bracket"></i>
+                            </a>
+                        </li>
+                        <li class="nav-link">
+                            <a class="nav-icon position-relative text-decoration-none" href="{% url 'registro' %}">
+                                <i class="fa-solid fa-user-pen"></i>
+                            </a>
+                        </li>
+                        {% else %}
+                        <li class="nav-link" >
+                            <a class="nav-icon position-relative text-decoration-none"  href="{% url 'logout' %}">
+                                <i class="fa-solid fa-arrow-right-from-bracket" data-bs-toggle="tooltip" title="Salir"></i>
+                            </a>
+                        </li>
+                        {% endif %}
                     </ul>
                 </div>
-                <div class="navbar align-self-center d-flex">
-                    <div class="d-lg-none flex-sm-fill mt-3 mb-4 col-7 col-sm-auto pr-3">
-                        <div class="input-group">
-                            <input type="text" class="form-control" id="inputMobileSearch" placeholder="Search ...">
-                            <div class="input-group-text">
-                                <i class="fa fa-fw fa-search"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <a class="nav-icon d-none d-lg-inline" href="#" data-bs-toggle="modal" data-bs-target="#templatemo_search">
-                        <i class="fa fa-fw fa-search text-dark mr-2"></i>
-                    </a>
-                    <a class="nav-icon position-relative text-decoration-none" href="#">
-                        <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
-                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">7</span>
-                    </a>
-                    <a class="nav-icon position-relative text-decoration-none" href="#">
-                        <i class="fa fa-fw fa-user text-dark mr-3"></i>
-                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">+99</span>
-                    </a>
-                </div>
             </div>
-
         </div>
     </nav>
     <!-- Close Header -->
 
     <!-- Modal -->
-    <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="w-100 pt-1 mb-5 text-right">
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -122,10 +135,10 @@ https://templatemo.com/tm-559-zay-shop
 
 
     {% block content%}
-    
+
     {% endblock %}
 
-   
+
 
     <!-- Start Footer -->
     <footer class="bg-dark" id="tempaltemo_footer">
@@ -183,23 +196,28 @@ https://templatemo.com/tm-559-zay-shop
                 <div class="col-auto me-auto">
                     <ul class="list-inline text-left footer-icons">
                         <li class="list-inline-item border border-light rounded-circle text-center">
-                            <a class="text-light text-decoration-none" target="_blank" href="http://facebook.com/"><i class="fab fa-facebook-f fa-lg fa-fw"></i></a>
+                            <a class="text-light text-decoration-none" target="_blank" href="http://facebook.com/"><i
+                                    class="fab fa-facebook-f fa-lg fa-fw"></i></a>
                         </li>
                         <li class="list-inline-item border border-light rounded-circle text-center">
-                            <a class="text-light text-decoration-none" target="_blank" href="https://www.instagram.com/"><i class="fab fa-instagram fa-lg fa-fw"></i></a>
+                            <a class="text-light text-decoration-none" target="_blank"
+                                href="https://www.instagram.com/"><i class="fab fa-instagram fa-lg fa-fw"></i></a>
                         </li>
                         <li class="list-inline-item border border-light rounded-circle text-center">
-                            <a class="text-light text-decoration-none" target="_blank" href="https://twitter.com/"><i class="fab fa-twitter fa-lg fa-fw"></i></a>
+                            <a class="text-light text-decoration-none" target="_blank" href="https://twitter.com/"><i
+                                    class="fab fa-twitter fa-lg fa-fw"></i></a>
                         </li>
                         <li class="list-inline-item border border-light rounded-circle text-center">
-                            <a class="text-light text-decoration-none" target="_blank" href="https://www.linkedin.com/"><i class="fab fa-linkedin fa-lg fa-fw"></i></a>
+                            <a class="text-light text-decoration-none" target="_blank"
+                                href="https://www.linkedin.com/"><i class="fab fa-linkedin fa-lg fa-fw"></i></a>
                         </li>
                     </ul>
                 </div>
                 <div class="col-auto">
                     <label class="sr-only" for="subscribeEmail">Email address</label>
                     <div class="input-group mb-2">
-                        <input type="text" class="form-control bg-dark border-light" id="subscribeEmail" placeholder="Email address">
+                        <input type="text" class="form-control bg-dark border-light" id="subscribeEmail"
+                            placeholder="Email address">
                         <div class="input-group-text btn-success text-light">Subscribe</div>
                     </div>
                 </div>
@@ -211,8 +229,9 @@ https://templatemo.com/tm-559-zay-shop
                 <div class="row pt-2">
                     <div class="col-12">
                         <p class="text-left text-light">
-                            Copyright &copy; 2021 Company Name 
-                            | Designed by <a rel="sponsored" href="https://templatemo.com" target="_blank">TemplateMo</a>
+                            Copyright &copy; 2021 Company Name
+                            | Designed by <a rel="sponsored" href="https://templatemo.com"
+                                target="_blank">TemplateMo</a>
                         </p>
                     </div>
                 </div>
