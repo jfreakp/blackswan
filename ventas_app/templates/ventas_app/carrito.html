@@ -1,0 +1,58 @@
+{% extends 'productos_app/base.html' %}
+{% load static %}
+{% block content%}
+<!--
+<div class="content">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Precio</th>
+        <th scope="col">Cantidad</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for ca in object_list.carritos %}
+      <tr>
+
+        <td><img src="media/{{ca.imagen}}" class="img-thumbnail" style="width:10%;"></td>
+        <td>{{ca.nombre}}</td>
+        <td>{{ca.precio}}</td>
+        <td>{{ca.cantidad}}</td>
+      </tr>
+      {% endfor %}
+      <tr>
+        <td></td>
+        <td>
+          <h3>Precio Final</h3>
+        </td>
+        <td>
+          <h3>{{object_list.precio_total}}</h3>
+        </td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="row">
+    <button type="button" class="btn btn-primary btn-lg">Enviar Compra</button>
+  </div>
+</div>
+<hr>
+-->
+<div class="row">
+  <div class="d-flex flex-column justify-content-end">
+    {% for ca in object_list.carritos %}
+    <div class="p-2">
+      <div class="card w-75">
+        <div class="card-body">
+          <h5 class="card-title">{{ca.nombre}}</h5>
+          <p class="card-text">Precio $ {{ca.precio}}</p>
+          <a class="btn btn-primary" href="{% url 'eliminar_carrito' ca.id %}" role="button">Eliminar</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

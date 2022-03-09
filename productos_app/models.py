@@ -1,5 +1,6 @@
 from tkinter import TRUE
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Categoria(models.Model):
@@ -28,6 +29,18 @@ class Producto(models.Model):
         return self.nombre
     
 
+class Carrito(models.Model):
+    usuario = models.ForeignKey(User, blank=True, on_delete=models.CASCADE)
+    producto = models.IntegerField(blank=False, default=0)
+    nombre = models.CharField(max_length=100, blank=False, default=' ')
+    cantidad = models.PositiveIntegerField(default=0, blank=False)
+    imagen = models.ImageField(upload_to='images/', blank=True)
+    precio = models.PositiveIntegerField(blank=False)
+    fecha = models.DateTimeField(auto_now_add=True)
+    activo = models.BooleanField(default=False)
+    
+    def __str__(self):
+        return self.nombre
     
 #class ImagenProducto(models.Model):
 #    producto = models.ForeignKey(Producto, blank=False, on_delete=models.CASCADE)

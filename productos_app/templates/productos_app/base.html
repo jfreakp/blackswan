@@ -35,22 +35,24 @@ https://templatemo.com/tm-559-zay-shop
                 <div>
                     <i class="fa fa-envelope mx-2"></i>
                     <a class="navbar-sm-brand text-light text-decoration-none"
-                        href="mailto:info@company.com">info@company.com</a>
+                        href="mailto:jptorresdota@gmail.com">jptorresdota@gmail.com</a>
                     <i class="fa fa-phone mx-2"></i>
                     <a class="navbar-sm-brand text-light text-decoration-none" href="tel:010-020-0340">072110148</a>
                 </div>
                 <div>
-                    <a class="text-light" href="https://www.facebook.com/profile.php?id=100074772262744" target="_blank" rel="sponsored"><i
-                            class="fab fa-facebook-f fa-sm fa-fw me-2"></i></a>
+                    <a class="text-light" href="https://www.facebook.com/profile.php?id=100074772262744" target="_blank"
+                        rel="sponsored"><i class="fab fa-facebook-f fa-sm fa-fw me-2"></i></a>
                     <a class="text-light" href="https://www.instagram.com/blackswan.ec/" target="_blank"><i
                             class="fab fa-instagram fa-sm fa-fw me-2"></i></a>
+                    {%if user.is_authenticated%}
+                    <a class="text-light" style="text-decoration: none; size: 24px;" href="#">Bienvenido, {{user}}</h1></a>
+                    {%endif%}
                 </div>
             </div>
         </div>
     </nav>
     <!-- Close Top Nav -->
-
-
+   
     <!-- Header -->
     <nav class="navbar navbar-expand-lg navbar-light shadow">
         <div class="container d-flex justify-content-between align-items-center">
@@ -78,6 +80,9 @@ https://templatemo.com/tm-559-zay-shop
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'shop' %}">Tienda</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'carrito' %}">Carrito</a>
+                        </li>
                         {% endif %}
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'contact' %}">Contactanos</a>
@@ -102,9 +107,10 @@ https://templatemo.com/tm-559-zay-shop
                             </a>
                         </li>
                         {% else %}
-                        <li class="nav-link" >
-                            <a class="nav-icon position-relative text-decoration-none"  href="{% url 'logout' %}">
-                                <i class="fa-solid fa-arrow-right-from-bracket" data-bs-toggle="tooltip" title="Salir"></i>
+                        <li class="nav-link">
+                            <a class="nav-icon position-relative text-decoration-none" href="{% url 'logout' %}">
+                                <i class="fa-solid fa-arrow-right-from-bracket" data-bs-toggle="tooltip"
+                                    title="Salir"></i>
                             </a>
                         </li>
                         {% endif %}
