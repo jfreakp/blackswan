@@ -21,7 +21,8 @@ class Producto(models.Model):
     talla = models.CharField(max_length=20, blank=False)
     precio_normal = models.PositiveIntegerField(blank=False)
     precio_oferta = models.PositiveIntegerField(blank=False)
-    stock = models.PositiveIntegerField(blank=False,default=1)    
+    stock = models.PositiveIntegerField(blank=False,default=1)   
+    oferta = models.BooleanField(blank=False,default=False) 
     imagen = models.ImageField(upload_to='images/p/',blank=False)
     vigente = models.BooleanField(default=True, blank=False)
     

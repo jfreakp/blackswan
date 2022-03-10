@@ -11,6 +11,7 @@ urlpatterns = [
     path('about/',views.About,name='about'),
     path('contact/',views.Contacto,name='contact'),
     path('shop/',ShopListView.as_view(),name='shop'),
+    #path('buscar/genero/<str:genero>',views.ListarGenero,name='buscar_genero'),
 ]
 
 if settings.DEBUG:

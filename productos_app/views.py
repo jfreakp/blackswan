@@ -1,12 +1,9 @@
 from contextvars import Context
 from multiprocessing import get_context
 from webbrowser import get
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Producto, Categoria
 from django.views.generic import ListView
-from itertools import chain
-from operator import attrgetter
-
 # Create your views here.
 #def home(request):
 #    catagorias = Categoria.objects.all()
@@ -33,9 +30,18 @@ class HomeListView(ListView):
 class ShopListView(ListView):
     template_name = 'productos_app/tienda.html'
     def get_queryset(self):
-        context = Producto.objects.all()
-        print(context)
+        productos = Producto.objects.all()
+        categorias = Categoria.objects.all()
+        context = {"productos":productos, "categorias":categorias}
         return context
+    
+def ListarGenero(request, genero):
+    template_name = 'productos_app/tienda.html'
+    def get_queryset(self):
+        productos = Producto.objects.filter(genero=genero).all()
+        categorias = Categoria.objects.all()
+        context = {"productos":productos, "categorias":categorias}
+        return redirect('shop', context)
     
 def About(request):    
     return render(request, 'productos_app/about.html')
