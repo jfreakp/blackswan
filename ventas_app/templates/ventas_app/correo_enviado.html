@@ -1,0 +1,20 @@
+{% extends 'productos_app/base.html' %}
+{% load static %}
+{% block content%}
+<br>
+<div class="continer">
+  <div class="row">
+    <div class="d-flex justify-content-center">
+      <div class="jumbotron">
+        <h1 class="display-4">Muy bien!</h1>
+        <p class="lead">Tu pedido ha sido enviado, pronto un asesor contactara contigo.  </p>
+        <p>Gracias por preferirnos.</p>
+        <hr class="my-4">
+        <p>Para poder seguir comprando, has clic y regresaras a la Tienda.</p>
+        <a class="btn btn-primary btn-lg" href="{% url 'shop' %}" role="button">Ir a la tienda</a>
+      </div>
+    </div>
+  </div>
+</div>
+<hr>
+{% endblock %}

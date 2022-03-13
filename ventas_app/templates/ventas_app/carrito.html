@@ -54,7 +54,7 @@
       <div class="card mb-3" style="max-width: 540px;">
         <div class="row g-0">
           <div class="col-md-4">
-            <img src="media/{{ca.imagen}}" class="img-fluid rounded-start" alt="...">
+            <img src="/media/{{ca.imagen}}" class="img-fluid rounded-start" alt="...">
           </div>
           <div class="col-md-8">
             <div class="card-body">
@@ -76,7 +76,7 @@
         <div class="card-body">
           <h5 class="card-title">{{object_list.precio_total}} US $</h5>
           <p class="card-text">Tu pedido se ira vía mail y un asesor se contactara contigo.</p>
-          <a href="#" class="btn btn-primary">Enviar pedido</a>
+          <a href="{% url 'correo_enviado'%}" class="btn btn-primary">Enviar pedido</a>
         </div>
       </div>
 
