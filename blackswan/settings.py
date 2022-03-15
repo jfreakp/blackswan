@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-zrh62@hno-1ih#h7yue943-ld)s7&+to+aa+v4k3m**b0l_3*a
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['http://blackswan-store.com/','localhost']
+ALLOWED_HOSTS = ['127.0.0.1','localhost','10.124.0.2','www.blackswan-store.com']
 
 
 # Application definition
@@ -130,6 +130,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field

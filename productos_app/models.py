@@ -43,19 +43,7 @@ class Carrito(models.Model):
     def __str__(self):
         return self.nombre
     
-class Persona(models.Model):
-    usuario = models.ForeignKey(User, blank=True, on_delete=models.CASCADE)
-    nombre = models.CharField(max_length=100, blank=False, default=' ')
-    apellido = models.CharField(max_length=100, blank=False, default=' ')
-    celular = models.CharField(max_length=20, blank=False, default=' ')
-    telefono = models.CharField(max_length=20, blank=False, default=' ')
-    foto = models.ImageField(upload_to='fotos/', blank=True)
-    precio = models.PositiveIntegerField(blank=False)
-    fecha = models.DateTimeField(auto_now_add=True)
-    
-    def __str__(self):
-        return self.nombre
-    
+   
 #class ImagenProducto(models.Model):
 #    producto = models.ForeignKey(Producto, blank=False, on_delete=models.CASCADE)
 #    nombre = models.CharField(max_length=100,blank=False)    

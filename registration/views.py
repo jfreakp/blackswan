@@ -1,7 +1,12 @@
+import re
 from .forms import UserCreationFormWithEmail
 from django.views.generic import CreateView
 from django.urls import reverse_lazy
 from django import forms
+from .forms import PersonaForm
+from django.shortcuts import render, redirect
+from django.http import HttpResponseRedirect
+
 
 class RegistroView(CreateView):
     form_class = UserCreationFormWithEmail    
@@ -20,3 +25,21 @@ class RegistroView(CreateView):
         form.fields['password2'].widget = forms.PasswordInput(
             attrs={'class':'form-control mb-2', 'placeholder':'Repite la contraseña'})
         return form
+    
+
+def Persona_nueva(request):
+    if request.method == "POST":
+        user = request.user.id
+        form = PersonaForm(request.POST)
+        form = PersonaForm(initial={'usuario':user})
+        print('paso')
+        if form.is_valid():
+            print('es valido')
+            return redirect('persona_detalle')
+    else:
+        form = PersonaForm()
+    return render(request, 'registration/persona/nueva.html', {'form': form})
+
+
+def Persona_detalle(request):
+    return render(request, 'registration/persona/detalle.html')
